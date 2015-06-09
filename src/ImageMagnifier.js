@@ -28,6 +28,7 @@ var Magnifier = React.createClass({
         // the size of the non-zoomed-in image
         smallImage: React.PropTypes.shape({
             src: React.PropTypes.string.isRequired,
+            style: React.PropTypes.object.isRequired,
             width: React.PropTypes.number.isRequired,
             height: React.PropTypes.number.isRequired
         }).isRequired,
@@ -103,8 +104,9 @@ var ImageMagnifier = React.createClass({
         }),
 
         // the size of the non-zoomed-in image
-        image: React.PropTypes.shape({
+        smallImage: React.PropTypes.shape({
             src: React.PropTypes.string.isRequired,
+            style: React.PropTypes.object.isRequired,
             width: React.PropTypes.number.isRequired,
             height: React.PropTypes.number.isRequired
         }).isRequired,
@@ -164,7 +166,7 @@ var ImageMagnifier = React.createClass({
     componentDidUpdate() {
         React.render(<Magnifier
             size={this.props.size}
-            smallImage={this.props.image}
+            smallImage={this.props.smallImage}
             zoomImage={this.props.zoomImage}
             cursorOffset={this.props.cursorOffset}
             {...this.state}
@@ -173,7 +175,7 @@ var ImageMagnifier = React.createClass({
 
     render () {
         return (
-            <img {...this.props} src={this.props.image.src} />
+            <img style={this.props.smallImage.style} src={this.props.smallImage.src} />
         );
     }
 });
